@@ -1,0 +1,74 @@
+/*
+ * SE Project: SPORK
+ * Authors: Kevin Kauffman, Glenn Sweithelm
+ * ArenaOne.css - Handled the CSS for ArenaOne
+ * Change Log
+ * ////////////////////////////////////////////////////////////////////////////
+ * Date       Contributer    Change
+ * 24jan18    Kevin          First draft completed and ready to be verified
+ * 18Feb18    Kevin          Moved background image to images folder
+ * 06Mar18    Glenn          Added Button CSS
+ * 22Mar18    Kevin          Updated Arena Sprite Image
+ * 29Mar18    Kevin          Updated Font to Prevent Loading Error
+ * 15Apr18    Kevin          Attempted to fix font loading error
+*/
+
+@font-face {
+   -fx-font-family: 'VT323';
+   src: url('../title/Fonts/VT323-Regular.ttf');
+}
+
+.arena{
+    -fx-background-size: 100% 100%;
+    -fx-background-image: url("../images/dessertSprite.png");
+}
+
+.healthBar{
+    -fx-accent: #f00;
+    -fx-indeterminate-bar-animation-time: 1;
+}
+
+.healthBar > .track {
+  -fx-text-box-border: #a50000;
+  -fx-control-inner-background: #bf0000;
+}
+
+.xpBar{
+    -fx-accent: #1fe700;
+}
+
+.xpBar > .track {
+  -fx-text-box-border: #1ac100;
+  -fx-control-inner-background: #17ae00;
+}
+
+.button{
+    -fx-font-family: 'VT323';
+    -fx-font-size: 35;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000;
+    -fx-padding: 30 0 30 0;
+    /*Says there's an error here, but it works correctly and I can't find anything wrong*/
+    -fx-background-color: linear-gradient(#f0ff00, #b2ff08),
+        radial-gradient(center 50% -40%, radius 240%, #38ee00 45%, #32d600 50%);
+    -fx-background-radius: 50;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(#00ff51, #00ff78),
+        radial-gradient(center 50% -40%, radius 190%, #00e348 45%, #00ff9f 50%);
+    -fx-cursor: hand;
+    -fx-text-fill: #111;
+}
+
+.HPLabel{
+    -fx-font-family: 'VT323';
+    -fx-text-fill: #fff;
+    -fx-font-size: 35;
+}
+
+.XPLabel{
+    -fx-font-family: 'VT323';
+    -fx-text-fill: #fff;
+    -fx-font-size: 35;
+}

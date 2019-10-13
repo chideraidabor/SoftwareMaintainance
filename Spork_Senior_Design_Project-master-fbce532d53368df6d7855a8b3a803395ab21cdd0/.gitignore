@@ -1,0 +1,6 @@
+
+*.class
+
+*.properties
+/dist/
+nbproject/private/private\.xml
