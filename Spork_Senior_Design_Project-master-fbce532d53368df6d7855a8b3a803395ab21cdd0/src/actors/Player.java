@@ -280,8 +280,8 @@ public class Player extends Actor {
         super.move();
         
         if(!hasMoved){
-            if ((Double.compare(getY(), getLy()) != 0) ||
-                (Double.compare(getX(), getLx()) != 0)){
+            if ((Double.compare(getY(), getNewY()) != 0) ||
+                (Double.compare(getX(), getNewX()) != 0)){
                 hasMoved = true;
             }
         } // else do nothing
@@ -419,3 +419,5 @@ public class Player extends Actor {
         return inventory;
     }
 }
+
+

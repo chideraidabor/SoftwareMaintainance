@@ -112,11 +112,11 @@ public abstract class Actor {
         return y;
     }
     
-    public double getLx() {
+    public double getNewX() {
         return lx;
     }
 
-    public double getLy() {
+    public double getNewY() {
         return ly;
     }
 
@@ -719,21 +719,21 @@ public abstract class Actor {
     }
     
     public Direction checkDir(){
-        if (Double.compare(this.getY(), this.getLy()) < 0 && Double.compare(this.getX(), this.getLx()) == 0){
+        if (Double.compare(this.getY(), this.getNewY()) < 0 && Double.compare(this.getX(), this.getNewX()) == 0){
             return Direction.N;
-        } else if(Double.compare(this.getY(), this.getLy()) < 0 && Double.compare(this.getX(), this.getLx()) > 0){
+        } else if(Double.compare(this.getY(), this.getNewY()) < 0 && Double.compare(this.getX(), this.getNewX()) > 0){
             return Direction.NE;
-        } else if(Double.compare(this.getX(), this.getLx()) > 0 && Double.compare(this.getY(), this.getLy()) == 0){
+        } else if(Double.compare(this.getX(), this.getNewX()) > 0 && Double.compare(this.getY(), this.getNewY()) == 0){
             return Direction.E;
-        } else if(Double.compare(this.getY(), this.getLy()) > 0 && Double.compare(this.getX(), this.getLx()) > 0){
+        } else if(Double.compare(this.getY(), this.getNewY()) > 0 && Double.compare(this.getX(), this.getNewX()) > 0){
             return Direction.SE;
-        } else if(Double.compare(this.getY(), this.getLy()) > 0 && Double.compare(this.getX(), this.getLx()) == 0){
+        } else if(Double.compare(this.getY(), this.getNewY()) > 0 && Double.compare(this.getX(), this.getNewX()) == 0){
             return Direction.S;
-        } else if(Double.compare(this.getY(), this.getLy()) > 0 && Double.compare(this.getX(), this.getLx()) < 0){
+        } else if(Double.compare(this.getY(), this.getNewY()) > 0 && Double.compare(this.getX(), this.getNewX()) < 0){
             return Direction.SW;
-        } else if(Double.compare(this.getX(), this.getLx()) < 0 && Double.compare(this.getY(), this.getLy()) == 0){
+        } else if(Double.compare(this.getX(), this.getNewX()) < 0 && Double.compare(this.getY(), this.getNewY()) == 0){
             return Direction.W;
-        } else if(Double.compare(this.getY(), this.getLy()) < 0 && Double.compare(this.getX(), this.getLx()) < 0){
+        } else if(Double.compare(this.getY(), this.getNewY()) < 0 && Double.compare(this.getX(), this.getNewX()) < 0){
             return Direction.NW;
         }
         
