@@ -1,33 +1,34 @@
 /*
- * SE Project: SPORK
- * Authors: Kevin Kauffman, Glenn Sweithelm
- * Character - Creates a singleton character and handles the stats for the
- *             player's character created
- * Change Log
- * /////////////////////////////////////////////////////////////////////////////
- * Date       Contributer    Change
- * 18Jan18    Kevin          Seperated CharacterGUI and Character Class
- * 31Jan18    Kevin          Determined Parameters and Added Checking to Setters
- * 18Feb18    Kevin          Created Actor Superclass for Character & Monsters
- * 19Feb18    Kevin          Added collision checking for obstacles.
- * 12Mar18    Kevin          Added functionality to determine if actor is a player
- * 22Mar18    Kevin          Overrode new changeDirection method
- * 29Mar18    Kevin          Added setToCenter method
- * 30Mar18    Kevin          Updated Stats Variable Types & Overrode New Methods
- *                           Player Handles Progress & Exp Bar
- *                           Updated Damage Functionality
- * 31Mar18    Kevin          Monsters can't move until player does first
- * 31Mar18    Glenn          Added Inventory
- * 03Apr18    Kevin          Add functionality to change arenas
- *                           Fixed Monster Bounce Error
- *                           Added realistic stats
- * 15Apr18    Kevin          Added Combat Functionality
+* SE Project: SPORK
+* Authors: Kevin Kauffman, Glenn Sweithelm
+* Character - Creates a singleton character and handles the stats for the
+*             player's character created
+* Change Log
+* /////////////////////////////////////////////////////////////////////////////
+* Date       Contributer    Change
+* 18Jan18    Kevin          Seperated CharacterGUI and Character Class
+* 31Jan18    Kevin          Determined Parameters and Added Checking to Setters
+* 18Feb18    Kevin          Created Actor Superclass for Character & Monsters
+* 19Feb18    Kevin          Added collision checking for obstacles.
+* 12Mar18    Kevin          Added functionality to determine if actor is a player
+* 22Mar18    Kevin          Overrode new changeDirection method
+* 29Mar18    Kevin          Added setToCenter method
+* 30Mar18    Kevin          Updated Stats Variable Types & Overrode New Methods
+*                           Player Handles Progress & Exp Bar
+*                           Updated Damage Functionality
+* 31Mar18    Kevin          Monsters can't move until player does first
+* 31Mar18    Glenn          Added Inventory
+* 03Apr18    Kevin          Add functionality to change arenas
+*                           Fixed Monster Bounce Error
+*                           Added realistic stats
+* 15Apr18    Kevin          Added Combat Functionality
 */
 
 package actors;
 
 import Items.Item;
 import input.Input;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -52,8 +53,8 @@ public class Player extends Actor {
     private static ProgressBar healthBar = new ProgressBar(1F);
     private static ProgressBar xpBar = new ProgressBar(0F);
     
-    private Image attackButtonReadyImage = new Image("/images/attackButtonReadySprite.png", Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.1, Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.1, true, false); 
-    private Image attackButtonActiveImage = new Image("/images/attackButtonActiveSprite.png", Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.1, Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.1, true, false); 
+    private Image attackButtonReadyImage = new Image("/images/attackButtonReadySprite.png", getScreenWidth() * 0.1, getScreenHeight() * 0.1, true, false); 
+    private Image attackButtonActiveImage = new Image("/images/attackButtonActiveSprite.png", getScreenWidth() * 0.1, getScreenHeight() * 0.1, true, false); 
     private ImageView attackButtonView = new ImageView(attackButtonActiveImage); 
     
     private static ArrayList<Item> inventory = new ArrayList(10);
@@ -71,7 +72,7 @@ public class Player extends Actor {
     // constructor for the Singleton. The stats will vary, so begins with nothing
     // Parameters will change as development continues
     private Player(){
-        actorImg = new Image("/images/chefSprite.png", Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.1, Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.1, true, false);
+        actorImg = new Image("/images/chefSprite.png", getScreenWidth() * 0.1, getScreenHeight() * 0.1, true, false);
         imageView = new ImageView(actorImg);
         
         setStats();
@@ -191,60 +192,72 @@ public class Player extends Actor {
         Item equipped = inventory.get(0); 
         Image equippedImg = equipped.getImageView().getImage(); 
          
-        // TODO: This is going to need some updating - going to want to update the directions of the images 
-        switch(lastDir){ 
-            case N: 
-                equipped.setHorizontal();
-                equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0)); 
-                equipped.getImageView().setY(getY() - equippedImg.getHeight()); 
-                break; 
-            case NE: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() + getImage().getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0));  
-                break; 
-            case E: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() + getImage().getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0)); 
-                break; 
-            case SE: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() + getImage().getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0)); 
-                break; 
-            case S: 
-                equipped.setHorizontal();
-                equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0)); 
-                equipped.getImageView().setY(getY() + getImage().getHeight()); 
-                break; 
-            case SW: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() - equippedImg.getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0));  
-                break; 
-            case W: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() - equippedImg.getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0)); 
-                break; 
-            case NW: 
-                equipped.setVertical();
-                equipped.getImageView().setX(getX() - equippedImg.getWidth()); 
-                equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0)); 
-                break; 
-            default: 
-                equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0)); 
-                equipped.getImageView().setY(getY() - equippedImg.getHeight()); 
-        } 
+        direction(equipped, equippedImg);
          
         layer.getChildren().add(equipped.getImageView()); 
         
         checkAttack = true;
     }
+
+    private void direction(Item equipped, Image equippedImg) {
+        // TODO: This is going to need some updating - going to want to update the directions of the images
+        switch(lastDir){
+            case N:
+                setHorizontal(equipped, equippedImg);
+                break;
+            case NE: 
+                setVertical(equipped);
+                break;
+            case E: 
+                setVertical(equipped);
+                break;
+            case SE: 
+                setVertical(equipped);
+                break;
+            case S: 
+                setHorizontal2(equipped);
+                break;
+            case SW: 
+                setVertical2(equipped, equippedImg);
+                break;
+            case W: 
+                setVertical2(equipped, equippedImg);
+                break;
+            case NW: 
+                setVertical2(equipped, equippedImg);
+                break;
+            default:
+                equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0));
+                equipped.getImageView().setY(getY() - equippedImg.getHeight());
+        }
+    }
+
+    private void setHorizontal2(Item equipped) {
+        equipped.setHorizontal();
+        equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0));
+        equipped.getImageView().setY(getY() + getImage().getHeight());
+    }
+
+    private void setHorizontal(Item equipped, Image equippedImg) {
+        equipped.setHorizontal();
+        equipped.getImageView().setX(getX() + (getImage().getWidth() / 2.0));
+        equipped.getImageView().setY(getY() - equippedImg.getHeight());
+    }
+
+    private void setVertical2(Item equipped, Image equippedImg) {
+        equipped.setVertical();
+        equipped.getImageView().setX(getX() - equippedImg.getWidth());
+        equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0));
+    }
+
+    private void setVertical(Item equipped) {
+        equipped.setVertical();
+        equipped.getImageView().setX(getX() + getImage().getWidth());
+        equipped.getImageView().setY(getY() + (getImage().getHeight() / 2.0));
+    }
     
     private void hideEquipped(){
-        layer.getChildren().remove(inventory.get(0).getImageView());
+       layer.getChildren().remove(inventory.get(0).getImageView());
         canAttack = true;
         removeItem = false;
         startMovement();
@@ -292,27 +305,37 @@ public class Player extends Actor {
     }
     
     public void setToCenter(){
-        setX(Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.5);
-        setY(Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.5);
+        setX(SCREEN_CENTER_X);
+        setY(SCREEN_CENTER_Y);
+    }
+    private static final double SCREEN_CENTER_Y = getScreenHeight() * 0.5;
+    private static final double SCREEN_CENTER_X = getScreenWidth() * 0.5;
+
+    private static double getScreenHeight() throws HeadlessException {
+        return Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    }
+
+    private static double getScreenWidth() throws HeadlessException {
+        return Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     }
     
     public void changeArena(Direction dir){
         switch(dir){
             case N:
-                setX(Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.45);
+                setX(getScreenWidth() * 0.45);
                 setY(maxY);
                 break;
             case E:
                 setX(minX);
-                setY(Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.45);
+                setY(getScreenHeight() * 0.45);
                 break;
             case S:
-                setX(Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.45);
+                setX(getScreenWidth() * 0.45);
                 setY(minY);
                 break;
             case W:
                 setX(maxX);
-                setY(Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.45);
+                setY(getScreenHeight() * 0.45);
                 break;
         }
         
