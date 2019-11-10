@@ -108,7 +108,7 @@ public class GummiWorm extends MeleeMonster {
     // This will have to be enhanced
     @Override
     protected void setStats(){
-        speed = 3.0;
+        speed = 2.0;
         attack = 1.0;
         hp = 2.0;
         maxHp = 2.0;

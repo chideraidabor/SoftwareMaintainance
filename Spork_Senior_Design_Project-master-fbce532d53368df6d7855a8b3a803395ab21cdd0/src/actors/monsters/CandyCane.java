@@ -22,7 +22,6 @@ public class CandyCane extends MeleeMonster {
                              true, false);
         imageView = new ImageView(actorImg);
         
-        // This checking will have to be enhanced, it should not be able to be outside playable area.
         if(nx > 0){
             x = nx;
         } else {
