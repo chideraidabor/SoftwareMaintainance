@@ -99,6 +99,8 @@ public class LevelOneRoomOne extends Arena{
         monsList.add(gummiWorm);
         Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(donut);
+        Actor chocolate = new Chocolate((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.60), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
+        monsList.add(chocolate);
         
         // Add Obstacles - this will be changed to random in later iterations
         Obstacle cinRoll = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
