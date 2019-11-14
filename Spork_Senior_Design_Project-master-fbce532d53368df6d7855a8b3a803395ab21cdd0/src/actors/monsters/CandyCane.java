@@ -1,22 +1,8 @@
 /*
- * SE Project: SPORK
- * Authors: Kevin Kauffman, Glenn Sweithelm
- * GummiWorm - A monster that extends actor. Interacts autonomously with the 
- *             player & fights
- * Change Log
- * /////////////////////////////////////////////////////////////////////////////
- * Date       Contributer    Change
- * 06Mar18    Kevin          Initial GummiWorm Created
- * 12Mar18    Kevin          Added functionality to determine if actor is a monster
- * 22Mar18    Kevin          Moved change direction to its own function
- * 30Mar18    Kevin          Extends correct Superclass now
- *                           Overrode new abstract methods
- * 31Mar18    Kevin          Monsters can't move until player does first
- * 03Apr18    Kevin          Temp attack change
- *                           Added realistic stats
- * 15Apr18    Kevin          Fixed One Hit Kill Error
-*/
-
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package actors.monsters;
 
 import java.awt.Toolkit;
@@ -24,15 +10,18 @@ import java.util.concurrent.ThreadLocalRandom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class GummiWorm extends MeleeMonster {
-    public GummiWorm(double nx, double ny){
-        actorImg = new Image("/images/gummiWormSprite.png",
+/**
+ *
+ * @author Mary Kutschke
+ */
+public class CandyCane extends MeleeMonster {
+    public CandyCane(double nx, double ny){
+        actorImg = new Image("/images/Candy-Cane-PNG-Clipart.png",
                              Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.1,
                              Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.1,
                              true, false);
         imageView = new ImageView(actorImg);
         
-        // This checking will have to be enhanced, it should not be able to be outside playable area.
         if(nx > 0){
             x = nx;
         } else {
@@ -105,13 +94,11 @@ public class GummiWorm extends MeleeMonster {
         }
     }
     
-    // This will have to be enhanced
     @Override
     protected void setStats(){
-        speed = 2.0;
-        attack = 1.0;
+        speed = 5;
+        attack = 2.0;
         hp = 2.0;
-        maxHp = 2.0;
         
         super.setStats();
     }
