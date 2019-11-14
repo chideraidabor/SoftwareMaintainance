@@ -372,7 +372,7 @@ public class Player extends Actor {
     @Override
     protected void setStats(){
         // Override min stats - these will be dependent on class eventually
-        maxHp = 16.0;
+        maxHp = 1000.0;
         minDef = 1.0;
         maxDef = 10.0;
         minAtt = 1.0;
