@@ -97,6 +97,10 @@ public class LevelOneRoomOne extends Arena{
         // Add Monsters - this will be changed to random in later iterations
         Actor gummiWorm = new GummiWorm((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.30), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         monsList.add(gummiWorm);
+        Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
+        monsList.add(donut);
+        Actor chocolate = new Chocolate((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.60), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
+        monsList.add(chocolate);
         Actor candycane = new CandyCane((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.40), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         monsList.add(candycane);
         
