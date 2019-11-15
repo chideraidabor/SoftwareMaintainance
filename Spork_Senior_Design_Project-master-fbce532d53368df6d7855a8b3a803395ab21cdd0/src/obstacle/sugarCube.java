@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 
 public class sugarCube extends Obstacle{
     public sugarCube(double nx, double ny){
-        obsImg = new Image("/images/cinnamonRollSprite.png", Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.075, Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.075, true, false);
+        obsImg = new Image("/images/sugarCube.png", Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.075, Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.070, true, false);
         imageView = new ImageView(obsImg);
         
         // This checking will have to be enhanced, it should not be able to be outside playable area.
