@@ -105,6 +105,11 @@ public class LevelOneRoomOne extends Arena{
         obsList.add(cinRoll);
         Obstacle gumDrops = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.70), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         obsList.add(gumDrops);
+        Obstacle cube = new sugarCube((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
+        obsList.add(cube);
+        Obstacle syrup = new syrup((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.40), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
+        obsList.add(syrup);
+        
         
         // Add Items - this will be changed to random in later iterations
         Item toothPick = new Toothpick((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.25), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.25));
