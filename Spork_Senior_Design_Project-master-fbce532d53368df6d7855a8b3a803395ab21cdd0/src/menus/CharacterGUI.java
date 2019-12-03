@@ -22,6 +22,7 @@
 package menus;
 
 import actors.Player;
+import actors.Player2;
 import arena.room.LevelOneRoomOne;
 import gameHandler.GameHandler;
 import java.awt.Toolkit;
@@ -49,7 +50,8 @@ public class CharacterGUI {
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
-    static RadioButton Farmer = new RadioButton("Farmer");
+    static RadioButton rbFarmer = new RadioButton("Farmer");
+    
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
 
@@ -67,7 +69,7 @@ public class CharacterGUI {
         createChar.add(tfUsername, 1, 0, 4, 1);
         createChar.add(lClass, 0, 2);
         createChar.add(rbWarrior, 1, 2);
-        createChar.add(Farmer, 2, 2);
+        createChar.add(rbFarmer, 2, 2);
         createChar.add(taStats, 1, 3, 4, 1);
         createChar.add(btCreate, 0, 4, 2, 1);
         createChar.add(btBack, 2, 4);
@@ -94,8 +96,7 @@ public class CharacterGUI {
             taStats.setText("Warrior \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
         });
-        
-        Farmer.setOnAction(e -> {
+        rbFarmer.setOnAction(e -> {
             taStats.setText("Farmer \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
         });
