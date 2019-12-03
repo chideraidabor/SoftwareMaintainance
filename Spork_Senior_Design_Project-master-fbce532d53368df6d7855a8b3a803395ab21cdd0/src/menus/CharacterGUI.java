@@ -49,6 +49,7 @@ public class CharacterGUI {
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
+    static RadioButton Farmer = new RadioButton("Farmer");
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
 
@@ -66,6 +67,7 @@ public class CharacterGUI {
         createChar.add(tfUsername, 1, 0, 4, 1);
         createChar.add(lClass, 0, 2);
         createChar.add(rbWarrior, 1, 2);
+        createChar.add(Farmer, 2, 2);
         createChar.add(taStats, 1, 3, 4, 1);
         createChar.add(btCreate, 0, 4, 2, 1);
         createChar.add(btBack, 2, 4);
@@ -90,6 +92,11 @@ public class CharacterGUI {
         //  It's a start for the place holders
         rbWarrior.setOnAction(e -> {
             taStats.setText("Warrior \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 5 \nMagic Power: 1");
+        });
+        
+        Farmer.setOnAction(e -> {
+            taStats.setText("Farmer \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
         });
         
@@ -127,15 +134,15 @@ public class CharacterGUI {
     // though I have never been succesful in getting it figured out. As such, this could be done so much better
     // once it is figured out.
     public static void setStyles(){
-        taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
-        taStats.setWrapText(true);
-        taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
-                + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
+        //taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
+        //taStats.setWrapText(true);
+        //taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
+               // + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
                                                                 //Since warrior is default, it can start with this text
 
-        ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
-        rbWarrior.setToggleGroup(classGroup);
-        rbWarrior.setSelected(true);                            //Default selected
+        //ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
+        //rbWarrior.setToggleGroup(classGroup);
+        //rbWarrior.setSelected(true);                            //Default selected
     }
 
     //sets up a new stage that displays a message to enter username
