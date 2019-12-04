@@ -97,8 +97,8 @@ public class CharacterGUI {
                 + "Attack Power: 5 \nMagic Power: 1");
         });
         rbFarmer.setOnAction(e -> {
-            taStats.setText("Farmer \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
-                + "Attack Power: 5 \nMagic Power: 1");
+            taStats.setText("Farmer \nA little weak, but has specialty skills \n\nHealth: 10 \nStamina: 8 \n"
+                + "Attack Power: 7 \nMagic Power: 5");
         });
         
         //sets all the character values when button is clicked, but only if a name is entered
@@ -141,7 +141,11 @@ public class CharacterGUI {
                // + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
                                                                 //Since warrior is default, it can start with this text
 
-        //ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
+        ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
+        rbWarrior.setToggleGroup(classGroup);
+                    //So only one class/gender can be selected
+        rbFarmer.setToggleGroup(classGroup);
+                    //So only one class/gender can be selected
         //rbWarrior.setToggleGroup(classGroup);
         //rbWarrior.setSelected(true);                            //Default selected
     }
