@@ -40,6 +40,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javax.swing.ButtonGroup;
 
 public class CharacterGUI {
     private static LevelOneRoomOne firstArena = LevelOneRoomOne.getInstance();
@@ -53,7 +54,7 @@ public class CharacterGUI {
     static RadioButton rbWarrior = new RadioButton("Chef");
     static RadioButton rbFarmer = new RadioButton("Farmer");
     static RadioButton rbNinja = new RadioButton("Ninja");
-    
+    static ToggleGroup rbClass = new ToggleGroup();
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
 
@@ -66,6 +67,9 @@ public class CharacterGUI {
         stage.setScene(scene);
         stage.setFullScreen(true);
         scene.getStylesheets().add(CharacterGUI.class.getResource("CharacterGUI.css").toExternalForm());
+        rbFarmer.setToggleGroup(rbClass);
+        rbWarrior.setToggleGroup(rbClass);
+        rbNinja.setToggleGroup(rbClass);
         createChar.getStyleClass().add("createChar");
         createChar.add(lUsername, 0, 0);
         createChar.add(tfUsername, 1, 0, 4, 1);
