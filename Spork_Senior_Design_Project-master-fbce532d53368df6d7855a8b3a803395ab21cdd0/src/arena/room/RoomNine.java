@@ -65,9 +65,9 @@ public class RoomNine extends Arena{
         // Add Monsters - this will be changed to random in later iterations
         Actor gummiWorm = new GummiWorm((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.30), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         monsList.add(gummiWorm);
-        Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
+        Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.25), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(donut);
-         Actor gummyBear = new GummyBear((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
+         Actor gummyBear = new GummyBear((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.10), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
         monsList.add(gummyBear);
         
         // Add Obstacles - this will be changed to random in later iterations

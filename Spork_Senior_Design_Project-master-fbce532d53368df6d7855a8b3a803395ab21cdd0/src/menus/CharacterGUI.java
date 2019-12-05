@@ -96,7 +96,7 @@ public class CharacterGUI {
         //This makes radio buttons interactable when clicked, though arrow keys still need to be programmed.
         //  It's a start for the place holders
         rbWarrior.setOnAction(e -> {
-            taStats.setText("Warrior \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
         });
         rbFarmer.setOnAction(e -> {

@@ -63,7 +63,7 @@ public class RoomEight extends Arena{
         itemList.clear();
         
         // Add Monsters - this will be changed to random in later iterations
-       Actor gummyBear = new GummyBear((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
+        Actor gummyBear = new GummyBear((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(gummyBear);
         Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(donut);
@@ -71,6 +71,8 @@ public class RoomEight extends Arena{
         // Add Obstacles - this will be changed to random in later iterations
         Obstacle cinRoll = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
         obsList.add(cinRoll);
+        Obstacle cinRoll2 = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 045.), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
+        obsList.add(cinRoll2);
         Obstacle gumDrops = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.70), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         obsList.add(gumDrops);
     }

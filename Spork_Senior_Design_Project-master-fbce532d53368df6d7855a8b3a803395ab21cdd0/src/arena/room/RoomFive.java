@@ -73,5 +73,7 @@ public class RoomFive extends Arena{
         obsList.add(cinRoll);
         Obstacle gumDrops = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.70), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         obsList.add(gumDrops);
+        Obstacle gumDrops2 = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.55), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.55));
+        obsList.add(gumDrops2);
     }
 }

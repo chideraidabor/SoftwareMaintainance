@@ -67,10 +67,6 @@ public class RoomThree extends Arena{
         monsList.add(gummiWorm);
         Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(donut);
-        Actor donut2 = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.20), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
-        monsList.add(donut2);
-        Actor candycane = new CandyCane((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.40), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
-        monsList.add(candycane);
         
         // Add Obstacles
         Obstacle cinRoll = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
