@@ -45,6 +45,7 @@ public class Player extends Actor {
     private String username;
     private String job; //These are classes (ex: Bar-pear-ian)
     
+    
     public double minExp;
     public double maxExp;
     
@@ -385,7 +386,10 @@ public class Player extends Actor {
         attack = maxAtt;
         exp = minExp;
         username = "";
-        job = "Chef"; // TODO: To be changed when we add more class
+        job = "Chef";
+       // job1 = "ninja";
+                
+// TODO: To be changed when we add more class
         speed = 10.0;
     }
     

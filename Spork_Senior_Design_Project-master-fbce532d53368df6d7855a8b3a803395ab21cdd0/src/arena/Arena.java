@@ -22,6 +22,7 @@ package arena;
 import Items.Item;
 import actors.Actor;
 import actors.Player;
+import actors.Player3;
 import arena.room.NoRoom;
 import gameHandler.GameHandler;
 import input.Input;
@@ -70,6 +71,7 @@ public abstract class Arena {
                              true, false);
     protected static ImageView doorThree = new ImageView(doorThreeImg);
     protected static Player player = Player.getInstance();
+    protected static Player3 player3 = Player3.getInstance();
     protected static Input input = new Input();
     protected static ProgressBar healthBar;
     protected static ProgressBar xpBar;
@@ -145,8 +147,11 @@ public abstract class Arena {
     
     public void setObjects(Pane pane){
         healthBar = player.getHpBar();
+        healthBar = player3.getHpBar();
         xpBar = player.getExpBar();
+        xpBar = player3.getExpBar();
         attackButtonView = player.getAttackView();
+        attackButtonView = player3.getAttackView();
         attackButtonView.setX(attackButtonView.getImage().getWidth());
         attackButtonView.setY(Toolkit.getDefaultToolkit().getScreenSize().getHeight()
                               - attackButtonView.getImage().getHeight());
@@ -179,11 +184,13 @@ public abstract class Arena {
                     if(!escMenuOpen){
                         
                         player.setMovable(false);
+                        player3.setMovable(false);
                         EscapeMenu.setStage(root, currStage, this);
                         escMenuOpen = true;
                     }
                     else{
                         player.setMovable(true);
+                        player3.setMovable(true);
                         setObjects(root);
                         escMenuOpen = false;
                     }
@@ -225,6 +232,8 @@ public abstract class Arena {
         }
         
         player.setLayer(pane);
+        player3.setLayer(pane);
+        
     }
    
     public void checkDeaths(){
@@ -247,17 +256,28 @@ public abstract class Arena {
             }
             
             player.notFirst();
+        } else if (player3.hasMoved() && player3.isFirst()){
+              if(!monsList.isEmpty()){
+                monsList.forEach((monster) -> {
+                    monster.startMovement();
+                });
+            }
+               player3.notFirst();
         }
     }
     
     public void checkItemCollisions(){
         if(!itemList.isEmpty()){
             itemList.forEach((item) -> {
-                if(!player.getInventory().contains(item)){
-                    if(player.getImageView().getBoundsInParent().intersects(item.getImageView().getBoundsInParent())){
+                if(!player.getInventory().contains(item)|| !player3.getInventory().contains(item)){
+                    if(player.getImageView().getBoundsInParent().intersects(item.getImageView().getBoundsInParent())|| 
+                            player3.getImageView().getBoundsInParent().intersects(item.getImageView().getBoundsInParent())){
                         player.addItem(item);
+                        player3.addItem(item);
                         itemList.remove(item);
+                        //itemList.remove(item);
                         player.setCanAttack(true);
+                        player3.setCanAttack(true);
                     } // else do nothing
                 }
             });
@@ -265,11 +285,12 @@ public abstract class Arena {
     }
     
     public void checkAttack(){
-        if(!player.getInventory().isEmpty()){
-            if(player.getCheckAttack()){
+        if(!player.getInventory().isEmpty()|| !player3.getInventory().isEmpty() ){
+            if(player.getCheckAttack()|| player3.getCheckAttack()){
                 if(!monsList.isEmpty()){
                     monsList.forEach((monster) -> {
                         player.checkHit(monster);
+                        player3.checkHit(monster);
                     });
                 }
             }
@@ -305,13 +326,16 @@ public abstract class Arena {
     
     public void checkDoorCollisions(){
         if(!doorList[0].isNull()){
-            if(doorZero.getBoundsInParent().intersects(player.getImageView().getBoundsInParent())
-               && (player.checkDir() == Actor.Direction.N || player.checkDir() == Actor.Direction.NW
-                   || player.checkDir() == Actor.Direction.NE)){
+            if((doorZero.getBoundsInParent().intersects(player.getImageView().getBoundsInParent())||
+                    doorZero.getBoundsInParent().intersects(player3.getImageView().getBoundsInParent()))
+               && ((player.checkDir() == Actor.Direction.N || player.checkDir() == Actor.Direction.NW || 
+                    player3.checkDir() == Actor.Direction.N || player3.checkDir() == Actor.Direction.NW )
+                   || (player.checkDir() == Actor.Direction.NE || player3.checkDir() == Actor.Direction.NE))){
                 GameHandler.stopGame();
                 GameHandler.setArena(doorList[0]);
                 doorList[0].start(currStage, currScene);
                 player.changeArena(Actor.Direction.N);
+                player3.changeArena(Actor.Direction.N);
             }
         } // else do nothing
         if(!doorList[1].isNull()){
@@ -323,7 +347,21 @@ public abstract class Arena {
                 doorList[1].start(currStage, currScene);
                 player.changeArena(Actor.Direction.E);
             }
+            
         } // else do nothing
+        
+            if(!doorList[1].isNull()){
+            if(doorOne.getBoundsInParent().intersects(player3.getImageView().getBoundsInParent())
+               && (player3.checkDir() == Actor.Direction.E || player3.checkDir() == Actor.Direction.NE
+                   || player.checkDir() == Actor.Direction.SE)){
+                GameHandler.stopGame();
+                GameHandler.setArena(doorList[1]);
+                doorList[1].start(currStage, currScene);
+                player3.changeArena(Actor.Direction.E);
+            }
+            
+        }
+        
         if(!doorList[2].isNull()){
             if(doorTwo.getBoundsInParent().intersects(player.getImageView().getBoundsInParent())
                && (player.checkDir() == Actor.Direction.S || player.checkDir() == Actor.Direction.SW
@@ -334,6 +372,18 @@ public abstract class Arena {
                 player.changeArena(Actor.Direction.S);
             }
         } // else do nothing
+        
+        
+            if(!doorList[2].isNull()){
+            if(doorTwo.getBoundsInParent().intersects(player3.getImageView().getBoundsInParent())
+               && (player3.checkDir() == Actor.Direction.S || player3.checkDir() == Actor.Direction.SW
+                   || player3.checkDir() == Actor.Direction.SE)){
+                GameHandler.stopGame();
+                GameHandler.setArena(doorList[2]);
+                doorList[2].start(currStage, currScene);
+                player3.changeArena(Actor.Direction.S);
+            }
+        }
         if(!doorList[3].isNull()){
             if(doorThree.getBoundsInParent().intersects(player.getImageView().getBoundsInParent())
                && (player.checkDir() == Actor.Direction.W || player.checkDir() == Actor.Direction.NW
@@ -344,6 +394,17 @@ public abstract class Arena {
                 doorList[3].start(currStage, currScene);
             }
         } // else do nothing
+        
+        if(!doorList[3].isNull()){
+            if(doorThree.getBoundsInParent().intersects(player3.getImageView().getBoundsInParent())
+               && (player3.checkDir() == Actor.Direction.W || player3.checkDir() == Actor.Direction.NW
+                   || player3.checkDir() == Actor.Direction.SW)){
+                GameHandler.stopGame();
+                GameHandler.setArena(doorList[3]);
+                player3.changeArena(Actor.Direction.W);
+                doorList[3].start(currStage, currScene);
+            }
+        }
     }
     
     public ArrayList<Actor> getMonsList(){

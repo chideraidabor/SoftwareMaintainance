@@ -13,6 +13,7 @@
 package gameHandler;
 
 import actors.Player;
+import actors.Player3;
 import arena.Arena;
 import javafx.animation.AnimationTimer;
 import menus.GameOver;
@@ -20,6 +21,7 @@ import menus.GameOver;
 public class GameHandler {
     private static Arena currArena;
     private static Player player = Player.getInstance();
+    private static Player3 player3 = Player3.getInstance();
     
     protected static AnimationTimer gameLoop = new AnimationTimer(){
         @Override
@@ -48,8 +50,8 @@ public class GameHandler {
             //TODO: Check Attack Collisions - this may take some work
 
             currArena.checkDeaths();
-              
-            if(player.isDead()){
+              //added code
+            if(player.isDead()|| player3.isDead()){
                 // Activate Game Over, may change in future development
                 stop();
                 GameOver.setStage(currArena.getPane(), currArena.getStage());
