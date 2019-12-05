@@ -23,6 +23,7 @@ package menus;
 
 import actors.Player;
 import actors.Player2;
+import actors.Player3;
 //import actors.Player3
 import arena.room.LevelOneRoomOne;
 import gameHandler.GameHandler;
@@ -121,11 +122,24 @@ public class CharacterGUI {
                 initChar.setDefense(1);
 
                 if(rbWarrior.isSelected()){
+//                Player2 initChar2 = Player2.getInstance();
+//                media.stop();
+//                initChar.setUsername(tfUsername.getText());
+//                initChar.setDefense(1);
+                    
                     initChar.setHp(10);
                     initChar.setAttack(5);
-                }else if (rbNinja.isSelected()){
-                    initChar.setHp(10);
-                    initChar.setAttack(7);
+                }
+                
+                else if (rbNinja.isSelected()){
+                Player3 initChar3 = Player3.getInstance();
+                media.stop();
+                initChar.setUsername(tfUsername.getText());
+                initChar.setDefense(1);
+                    
+                    
+//                    initChar.setHp(10);
+//                    initChar.setAttack(7);
                 }
                 else{
                     initChar.setHp(8);
@@ -152,9 +166,11 @@ public class CharacterGUI {
                // + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
                                                                 //Since warrior is default, it can start with this text
 
-        //ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
-        //rbWarrior.setToggleGroup(classGroup);
-        //rbWarrior.setSelected(true);                            //Default selected
+        ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
+        rbWarrior.setToggleGroup(classGroup);
+        rbFarmer.setToggleGroup(classGroup);
+        rbNinja.setToggleGroup(classGroup);
+       // rbWarrior.setSelected(true);                            //Default selected
     }
 
     //sets up a new stage that displays a message to enter username
