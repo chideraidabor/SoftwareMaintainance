@@ -223,6 +223,7 @@ public abstract class Actor {
         return canMove;
     }
     
+    //public abstract boolean isPlayer2();
     public abstract boolean isPlayer();
     public abstract boolean isMonster();
     
