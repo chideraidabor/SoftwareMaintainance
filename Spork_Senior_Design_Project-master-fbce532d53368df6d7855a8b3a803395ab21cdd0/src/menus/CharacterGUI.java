@@ -46,9 +46,13 @@ public class CharacterGUI {
     static GridPane createChar = new GridPane();
     static Label lUsername = new Label("USERNAME");
     static Label lClass = new Label("CLASS");
+    static Label lWeapon = new Label ("weapon");
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
+    static RadioButton rbSowrd = new RadioButton("Sowrd");
+    static RadioButton rbWarHammer = new RadioButton("War Hammer");
+    static RadioButton rbSpear = new RadioButton("Spear");
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
 
@@ -65,7 +69,11 @@ public class CharacterGUI {
         createChar.add(lUsername, 0, 0);
         createChar.add(tfUsername, 1, 0, 4, 1);
         createChar.add(lClass, 0, 2);
+        createChar.add(lWeapon, 0, 1);
         createChar.add(rbWarrior, 1, 2);
+        createChar.add(rbSowrd, 1, 1);
+        createChar.add(rbWarHammer, 2, 1);
+        createChar.add(rbSpear, 3, 1);
         createChar.add(taStats, 1, 3, 4, 1);
         createChar.add(btCreate, 0, 4, 2, 1);
         createChar.add(btBack, 2, 4);
