@@ -115,7 +115,7 @@ public class CharacterGUI {
         });
         
         rbSpear.setOnAction(e -> {
-            taStats.setText("Weapon \nTold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 8 \nMagic Power: 5");
 
         });
