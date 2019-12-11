@@ -95,20 +95,12 @@ public class LevelOneRoomOne extends Arena{
         itemList.clear();
         
         // Add Monsters - this will be changed to random in later iterations
-        Actor gummiWorm = new GummiWorm((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.30), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
-        monsList.add(gummiWorm);
-        Actor donut = new Donut((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
-        monsList.add(donut);
         Actor chocolate = new Chocolate((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.60), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
         monsList.add(chocolate);
         Actor candycane = new CandyCane((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.40), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         monsList.add(candycane);
         
         // Add Obstacles - this will be changed to random in later iterations
-        Obstacle cinRoll = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
-        obsList.add(cinRoll);
-        Obstacle gumDrops = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.70), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
-        obsList.add(gumDrops);
         Obstacle cube = new sugarCube((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.80), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
         obsList.add(cube);
         Obstacle syrup = new syrup((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.40), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));

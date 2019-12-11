@@ -22,6 +22,8 @@
 package menus;
 
 import actors.Player;
+import actors.Player2;
+//import actors.Player3
 import arena.room.LevelOneRoomOne;
 import gameHandler.GameHandler;
 import java.awt.Toolkit;
@@ -49,6 +51,9 @@ public class CharacterGUI {
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
+    static RadioButton rbFarmer = new RadioButton("Farmer");
+    static RadioButton rbNinja = new RadioButton("Ninja");
+    
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
 
@@ -66,6 +71,8 @@ public class CharacterGUI {
         createChar.add(tfUsername, 1, 0, 4, 1);
         createChar.add(lClass, 0, 2);
         createChar.add(rbWarrior, 1, 2);
+        createChar.add(rbFarmer, 2, 2);
+        createChar.add(rbNinja, 3, 2);
         createChar.add(taStats, 1, 3, 4, 1);
         createChar.add(btCreate, 0, 4, 2, 1);
         createChar.add(btBack, 2, 4);
@@ -89,8 +96,17 @@ public class CharacterGUI {
         //This makes radio buttons interactable when clicked, though arrow keys still need to be programmed.
         //  It's a start for the place holders
         rbWarrior.setOnAction(e -> {
-            taStats.setText("Warrior \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
+        });
+        rbFarmer.setOnAction(e -> {
+            taStats.setText("Farmer \nA little weak, but has specialty skills \n\nHealth: 10 \nStamina: 8 \n"
+                + "Attack Power: 7 \nMagic Power: 5");
+        });
+        
+           rbNinja.setOnAction(e -> {
+            taStats.setText("Ninja \nVery strong and is a professional with his swords\n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 7 \nMagic Power: 2");
         });
         
         //sets all the character values when button is clicked, but only if a name is entered
@@ -99,16 +115,32 @@ public class CharacterGUI {
                 errorMessage(scene, createChar);
             }
             else{
-                Player initChar = Player.getInstance();
+/*                Player initChar = Player.getInstance();
                 media.stop();
                 initChar.setUsername(tfUsername.getText());
                 initChar.setDefense(1);
-
+*/
                 if(rbWarrior.isSelected()){
+                    Player initChar = Player.getInstance();
+                    media.stop();
+                    initChar.setUsername(tfUsername.getText());
+                    initChar.setDefense(1);
                     initChar.setHp(10);
                     initChar.setAttack(5);
+                }else if (rbFarmer.isSelected()){
+                    Player2 initChar = Player2.getInstance();
+                    media.stop();
+                    initChar.setUsername(tfUsername.getText());
+                    initChar.setDefense(1);
+                    initChar.setHp(10);
+                    initChar.setAttack(7);
                 }
                 else{
+                    Player initChar = Player.getInstance();
+                    media.stop();
+                    initChar.setUsername(tfUsername.getText());
+                    initChar.setDefense(1);
+
                     initChar.setHp(8);
                     initChar.setAttack(4);
                 }
@@ -127,15 +159,19 @@ public class CharacterGUI {
     // though I have never been succesful in getting it figured out. As such, this could be done so much better
     // once it is figured out.
     public static void setStyles(){
-        taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
-        taStats.setWrapText(true);
-        taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
-                + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
+        //taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
+        //taStats.setWrapText(true);
+        //taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
+               // + "Attack Power: 5 \nMagic Power: 1");          //These are place holders until we talk about fighting
                                                                 //Since warrior is default, it can start with this text
 
         ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
         rbWarrior.setToggleGroup(classGroup);
-        rbWarrior.setSelected(true);                            //Default selected
+                    //So only one class/gender can be selected
+        rbFarmer.setToggleGroup(classGroup);
+                    //So only one class/gender can be selected
+        rbNinja.setToggleGroup(classGroup);
+        //rbWarrior.setSelected(true);                            //Default selected
     }
 
     //sets up a new stage that displays a message to enter username

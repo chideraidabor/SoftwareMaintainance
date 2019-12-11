@@ -74,7 +74,5 @@ public class RoomTwo extends Arena{
         // Add Obstacles - this will be changed to random in later iterations
         Obstacle cinRoll = new CinnamonRoll((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.50));
         obsList.add(cinRoll);
-        Obstacle gumDrops = new GumDrops((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.70), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
-        obsList.add(gumDrops);
     }
 }

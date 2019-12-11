@@ -13,6 +13,7 @@
 package gameHandler;
 
 import actors.Player;
+import actors.Player2;
 import arena.Arena;
 import javafx.animation.AnimationTimer;
 import menus.GameOver;
@@ -20,6 +21,7 @@ import menus.GameOver;
 public class GameHandler {
     private static Arena currArena;
     private static Player player = Player.getInstance();
+    private static Player2 player2 = Player2.getInstance();
     
     protected static AnimationTimer gameLoop = new AnimationTimer(){
         @Override
@@ -28,6 +30,10 @@ public class GameHandler {
             
             player.processInput();
             player.move();
+
+            
+            player2.processInput();
+            player2.move();
 
             currArena.getMonsList().forEach((monster) -> {
                 monster.move();
@@ -40,6 +46,10 @@ public class GameHandler {
 
             player.updateUI();
             player.updateButtons();
+            
+            
+            player2.updateUI();
+            player2.updateButtons();
 
             currArena.getMonsList().forEach((monster) -> {
                 monster.updateUI();
@@ -50,6 +60,13 @@ public class GameHandler {
             currArena.checkDeaths();
               
             if(player.isDead()){
+                // Activate Game Over, may change in future development
+                stop();
+                GameOver.setStage(currArena.getPane(), currArena.getStage());
+            }
+            
+             
+            if(player2.isDead()){
                 // Activate Game Over, may change in future development
                 stop();
                 GameOver.setStage(currArena.getPane(), currArena.getStage());

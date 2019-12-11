@@ -66,9 +66,10 @@ public class RoomSeven extends Arena{
         // Add Monsters - this will be changed to random in later iterations
         Actor gummiWorm = new GummiWorm((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.30), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.30));
         monsList.add(gummiWorm);
-       
         Actor gummyBear = new GummyBear((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.50), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.70));
         monsList.add(gummyBear);
+        Actor candycane = new CandyCane((Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.35), (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.40));
+        monsList.add(candycane);
         
         
         // Add Obstacles - this will be changed to random in later iterations
