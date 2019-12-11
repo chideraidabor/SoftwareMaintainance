@@ -51,7 +51,7 @@ public class CharacterGUI {
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
     static RadioButton rbSowrd = new RadioButton("Sowrd");
-    static RadioButton rbWarHammer = new RadioButton("War Hammer");
+    static RadioButton rbToothpick = new RadioButton("Toothpick");
     static RadioButton rbSpear = new RadioButton("Spear");
     static Button btCreate = new Button("Start New Game");
     static Button btBack = new Button("Back");
@@ -72,7 +72,7 @@ public class CharacterGUI {
         createChar.add(lWeapon, 0, 1);
         createChar.add(rbWarrior, 1, 2);
         createChar.add(rbSowrd, 1, 1);
-        createChar.add(rbWarHammer, 2, 1);
+        createChar.add(rbToothpick, 2, 1);
         createChar.add(rbSpear, 3, 1);
         createChar.add(taStats, 1, 3, 4, 1);
         createChar.add(btCreate, 0, 4, 2, 1);
@@ -99,6 +99,25 @@ public class CharacterGUI {
         rbWarrior.setOnAction(e -> {
             taStats.setText("Warrior \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
+ 
+        });
+        
+        rbSowrd.setOnAction(e -> {
+            taStats.setText("Weapon \nStrong and unique, but lacking in modern day skills \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 5 \nMagic Power: 1");
+
+        });
+        
+        rbToothpick.setOnAction(e -> {
+            taStats.setText("Weapon \nThin! but strong. \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 6 \nMagic Power: 2");
+
+        });
+        
+        rbSpear.setOnAction(e -> {
+            taStats.setText("Weapon \nTold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 8 \nMagic Power: 5");
+
         });
         
         //sets all the character values when button is clicked, but only if a name is entered
