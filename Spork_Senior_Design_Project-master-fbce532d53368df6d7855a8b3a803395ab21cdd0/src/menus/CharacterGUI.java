@@ -162,8 +162,32 @@ public class CharacterGUI {
 
         ToggleGroup classGroup = new ToggleGroup();             //So only one class/gender can be selected
         rbWarrior.setToggleGroup(classGroup);
-        rbWarrior.setSelected(true);                            //Default selected
+        rbSowrd.setToggleGroup(classGroup);
+        rbToothpick.setToggleGroup(classGroup);
+        rbWarrior.setSelected(true);     //Default selected
+        
+        
     }
+    
+    public static void setWeaponStyles(){
+        taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
+        taStats.setWrapText(true);
+        taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 8 \nMagic Power: 5");          //These are place holders until we talk about fighting
+                                                                //Since warrior is default, it can start with this text
+
+        ToggleGroup weaponGroup = new ToggleGroup();             //So only one class/gender can be selected
+       // rbSowrd.setToggleGroup(weaponGroup);
+        rbToothpick.setToggleGroup(weaponGroup);
+        rbSpear.setToggleGroup(weaponGroup);
+        rbSowrd.setSelected(true);     //Default selected
+        
+        
+    }
+    
+
+    
+    
 
     //sets up a new stage that displays a message to enter username
     public static void errorMessage(Scene scene, GridPane pane){
