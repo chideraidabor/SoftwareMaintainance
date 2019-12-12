@@ -48,9 +48,13 @@ public class CharacterGUI {
     static GridPane createChar = new GridPane();
     static Label lUsername = new Label("USERNAME");
     static Label lClass = new Label("CLASS");
+    static Label lWeapon = new Label ("weapon");
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
+    static RadioButton rbSowrd = new RadioButton("Sowrd");
+    static RadioButton rbToothpick = new RadioButton("Toothpick");
+    static RadioButton rbSpear = new RadioButton("Spear");
     static RadioButton rbFarmer = new RadioButton("Farmer");
     static RadioButton rbNinja = new RadioButton("Ninja");
     
@@ -70,7 +74,11 @@ public class CharacterGUI {
         createChar.add(lUsername, 0, 0);
         createChar.add(tfUsername, 1, 0, 4, 1);
         createChar.add(lClass, 0, 2);
+        createChar.add(lWeapon, 0, 1);
         createChar.add(rbWarrior, 1, 2);
+        createChar.add(rbSowrd, 1, 1);
+        createChar.add(rbToothpick, 2, 1);
+        createChar.add(rbSpear, 3, 1);
         createChar.add(rbFarmer, 2, 2);
         createChar.add(rbNinja, 3, 2);
         createChar.add(taStats, 1, 3, 4, 1);
@@ -98,10 +106,29 @@ public class CharacterGUI {
         rbWarrior.setOnAction(e -> {
             taStats.setText("Chef \nStrong and hardy, but lacking in specialty skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
+ 
         });
         rbFarmer.setOnAction(e -> {
             taStats.setText("Farmer \nA little weak, but has specialty skills \n\nHealth: 10 \nStamina: 8 \n"
                 + "Attack Power: 7 \nMagic Power: 5");
+        });
+        
+        rbSowrd.setOnAction(e -> {
+            taStats.setText("Weapon \nStrong and unique, but lacking in modern day skills \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 5 \nMagic Power: 1");
+
+        });
+        
+        rbToothpick.setOnAction(e -> {
+            taStats.setText("Weapon \nThin! but strong. \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 6 \nMagic Power: 2");
+
+        });
+        
+        rbSpear.setOnAction(e -> {
+            taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 8 \nMagic Power: 5");
+
         });
         
            rbNinja.setOnAction(e -> {
@@ -172,7 +199,29 @@ public class CharacterGUI {
                     //So only one class/gender can be selected
         rbNinja.setToggleGroup(classGroup);
         //rbWarrior.setSelected(true);                            //Default selected
+        rbSowrd.setToggleGroup(classGroup);
+        rbToothpick.setToggleGroup(classGroup);
     }
+    
+    public static void setWeaponStyles(){
+        taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
+        taStats.setWrapText(true);
+        taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+                + "Attack Power: 8 \nMagic Power: 5");          //These are place holders until we talk about fighting
+                                                                //Since warrior is default, it can start with this text
+
+        ToggleGroup weaponGroup = new ToggleGroup();             //So only one class/gender can be selected
+       // rbSowrd.setToggleGroup(weaponGroup);
+        rbToothpick.setToggleGroup(weaponGroup);
+        rbSpear.setToggleGroup(weaponGroup);
+        rbSowrd.setSelected(true);     //Default selected
+        
+        
+    }
+    
+
+    
+    
 
     //sets up a new stage that displays a message to enter username
     public static void errorMessage(Scene scene, GridPane pane){
