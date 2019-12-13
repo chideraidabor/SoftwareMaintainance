@@ -239,10 +239,10 @@ public abstract class Arena {
         }
         
         player.setLayer(pane);
-        //player2.setLayer(pane);
-        if(player2.isFirst()){
-            player2.setLayer(pane);
-        }
+        player2.setLayer(pane);
+        //if(player2.isFirst()){
+          //  player2.setLayer(pane);
+        //}
         
         /*if(player2.isPlayer2()){
             player2.setLayer(pane);

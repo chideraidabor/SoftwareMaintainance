@@ -52,7 +52,7 @@ public class CharacterGUI {
     static TextField tfUsername = new TextField();
     static TextArea taStats = new TextArea();
     static RadioButton rbWarrior = new RadioButton("Chef");
-    static RadioButton rbSowrd = new RadioButton("Sowrd");
+    static RadioButton rbSowrd = new RadioButton("Sword");
     static RadioButton rbToothpick = new RadioButton("Toothpick");
     static RadioButton rbSpear = new RadioButton("Spear");
     static RadioButton rbFarmer = new RadioButton("Farmer");
@@ -114,19 +114,19 @@ public class CharacterGUI {
         });
         
         rbSowrd.setOnAction(e -> {
-            taStats.setText("Weapon \nStrong and unique, but lacking in modern day skills \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Sword \nStrong and unique, but lacking in modern day skills \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 5 \nMagic Power: 1");
 
         });
         
         rbToothpick.setOnAction(e -> {
-            taStats.setText("Weapon \nThin! but strong. \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Toothpick \nThin! but strong. \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 6 \nMagic Power: 2");
 
         });
         
         rbSpear.setOnAction(e -> {
-            taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+            taStats.setText("Spear \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
                 + "Attack Power: 8 \nMagic Power: 5");
 
         });
@@ -199,22 +199,22 @@ public class CharacterGUI {
                     //So only one class/gender can be selected
         rbNinja.setToggleGroup(classGroup);
         //rbWarrior.setSelected(true);                            //Default selected
-        rbSowrd.setToggleGroup(classGroup);
-        rbToothpick.setToggleGroup(classGroup);
+        //rbSowrd.setToggleGroup(classGroup);
+        //rbToothpick.setToggleGroup(classGroup);
     }
     
     public static void setWeaponStyles(){
-        taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
-        taStats.setWrapText(true);
-        taStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
-                + "Attack Power: 8 \nMagic Power: 5");          //These are place holders until we talk about fighting
+        //taStats.setEditable(false);                             //This will display info, so it shouldn't be editable
+        //taStats.setWrapText(true);
+        //t//aStats.setText("Weapon \nold fashion, but greatset of all! \n\nHealth: 10 \nStamina: 10 \n"
+          //      + "Attack Power: 8 \nMagic Power: 5");          //These are place holders until we talk about fighting
                                                                 //Since warrior is default, it can start with this text
 
         ToggleGroup weaponGroup = new ToggleGroup();             //So only one class/gender can be selected
        // rbSowrd.setToggleGroup(weaponGroup);
         rbToothpick.setToggleGroup(weaponGroup);
         rbSpear.setToggleGroup(weaponGroup);
-        rbSowrd.setSelected(true);     //Default selected
+        rbSowrd.setToggleGroup(weaponGroup);    //Default selected
         
         
     }
